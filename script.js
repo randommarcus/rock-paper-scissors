@@ -5,6 +5,25 @@ let humanChoice = " ";
 let computerScore = 0;
 let humanScore = 0;
 
+function playGame(){
+    console.log("Welcome");
+    for (let i=1; i<=5 ; i++){
+        console.log("Round "+i);
+        getHumanChoice();
+        getComputerChoice();
+        playRound(computerChoice, humanChoice);
+    }
+    if (computerScore > humanScore){
+        console.log("You Lost!!");
+    }    
+    else if (humanScore > computerScore){
+        console.log("You Won!!");
+    }
+    else{
+        console.log("The Game is Tied!!");
+    } 
+}
+
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
     if (choice = 0)
@@ -15,24 +34,22 @@ function getComputerChoice() {
         computerChoice = "scissors";
 }
 
-getComputerChoice();
-console.log(computerChoice);
 
 function getHumanChoice() {
     let choice = prompt("What do you choose? Rock, Paper, or Scissors?");
     humanChoice = choice.toLowerCase();
 }
 
-getHumanChoice();
-console.log(humanChoice);
 
 function playRound(computerChoice, humanChoice) {
     if ((computerChoice == "rock" && humanChoice == "scissors") || (computerChoice == "scissors" && humanChoice == "paper") || (computerChoice == "paper" && humanChoice == "rock"))
-        console.log("Computer Won!!")
-        computerScore += 1;
+        {console.log("Computer Won!!");
+        computerScore += 1;}  
     else if ((humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "scissors" && computerChoice == "paper") || (humanChoice == "paper" && computerChoice == "rock"))
-        console.log("You Won!!")
-        humanScore += 1;
+        {console.log("You Won!!");
+        humanScore += 1;}
     else
-        console.log ("That's a tie!!")
+        console.log ("That's a tie!!");
 }
+
+playGame();
